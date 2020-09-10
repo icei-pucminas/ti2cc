@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+<title>Controle de Estoque</title>
+</head>
+
+<script type="text/javascript">
+	function addIdToPath(form_name) {
+		var your_form = document.getElementById(form_name);
+		var id = your_form.elements.namedItem("id").value;
+		var action_src = "http://localhost:6789/bensdeconsumo/" + id;
+		your_form.action = action_src;
+	}
+</script>
+<body>
+	<p>
+	<h1>Bem de consumo não encontrado</h1>
+	</p>
+
+	Voltar para	<a href=formulario.html>formulário de cadastro</a>
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+app\Aplicacao.class
+model\BemDeConsumo.class
+service\BemDeConsumoService.class
+dao\DAO.class
+dao\ProdutoDAO.class
+model\BemDuravel.class
+model\Produto.class
+service\ServiceException.class
+model\JsonFormatter.class

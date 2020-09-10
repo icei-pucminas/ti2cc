@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+<title>Controle de Estoque</title>
+</head>
+
+<script type="text/javascript">
+
+function addIdToPath(form_name, base_url){
+    var your_form = document.getElementById(form_name);
+	var id = your_form.elements.namedItem("id").value;
+	action_src = base_url + id;
+	your_form.action = action_src;
+}
+
+</script>
+<body>
+	<p>
+	<h1>Controle de Estoque</h1>
+	</p>
+
+
+	<section class="section--container__responsive">
+
+		<section class="section--mainrow__responsive first--section">
+			<h1 class="generaltext">Cadastramento de Bem de consumo</h1>
+			<p>Cadastramento de produto através de web service.</p>
+			<form class="form--register"
+				action="http://localhost:6789/bensdeconsumo" method="post"
+				id="form-add">
+				<p>Descrição:</p>
+				<input class="input--register" type="text" name="descricao" value=""
+					placeholder="leite, pão...">
+				<p>Preco:</p>
+				<input class="input--register" type="text" name="preco" value="">
+				<p>Quantidade:</p>
+				<input class="input--register" type="text" name="quantidade"
+					value="">
+				<p>Data de fabricação:</p>
+				<input class="input--register" type="text" name="dataFabricacao"
+					value="" placeholder="2020-04-16T12:00:00..."> 
+				<p>Data de validade:</p>
+				<input
+					class="input--register" type="text" name="dataValidade" value=""
+					placeholder="2020-04-16..."> 
+				<input type="submit"
+					value="cadastrar" class="input--main__style input--button">
+			</form>
+		</section>
+
+	</section>
+
+	<section class="section--container__responsive">
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Consultar bem de consumo</h1>
+			<p>Consulta bem de consumo no estoque através de web service.</p>
+			<form onsubmit="addIdToPath('form-get', 'http://localhost:6789/bensdeconsumo/')"
+			      method="get" id="form-get">
+				<input class="input--down" type="text" id="id" value=""
+					placeholder="descrição do produto..."> 
+					<input type="submit" value="consultar"
+					class="input--button input--consult__style">
+			</form>
+		</section>
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Remover produto</h1>
+			<p>Remove bem de consumo do estoque.</p>
+			<form  onsubmit="addIdToPath('form-delete', 'http://localhost:6789/bensdeconsumo/delete/')" method="post" id="form-delete">
+				<input class="input--down" type="text" id="id" value=""
+					placeholder="descrição do produto..."> <input type="submit"
+					value="remover" class="input--remove__style input--button">
+			</form>
+		</section>
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Todos os produtos</h1>
+			<p>Recupera todos os bens de consumo do estoque.</p>
+			<form action="http://localhost:6789/bensdeconsumo"  method="get" id="form-all">
+				<input type="submit"
+					value="todos" class="input--consult__style input--button">
+			</form>
+		</section>
+
+	</section>
+
+
+	<section class="section--container__responsive"
+		style="visibility: hidden" id="product-result">
+		<table border="1">
+			<tr>
+				<td>Produto id:</td>
+				<td><span id="id">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Descricao:</td>
+				<td><span id="descricao">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Preco:</td>
+				<td><span id="preco">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Quantidade:</td>
+				<td><span id="quant">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Data de fabricacao:</td>
+				<td><span id="dataFabricacao">Sem Resultado</span></td>
+			</tr>
+		</table>
+	</section>
+
+	<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+}
+
+.generaltext, p {
+	font-family: Arial;
+	text-align: center;
+}
+
+.section--container__responsive {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-bottom: dashed;
+	border-color: gray;
+}
+
+.input--down {
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 10px;
+}
+
+.input--main__style {
+	background-color: #00FF00;
+}
+
+.input--remove__style {
+	background-color: red;
+}
+
+.input--consult__style {
+	background-color: darkblue;
+}
+
+.input--button {
+	font-weight: bold;
+	font-family: Arial;
+	font-size: medium;
+	border-color: transparent;
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.input--register {
+	display: inline;
+}
+
+.input--radio {
+	display: inline;
+}
+
+input {
+	display: block;
+	border-radius: 7px;
+	padding: 10px;
+	border-style: solid;
+	border-color: lightgray;
+	color: black;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.p--radio__display {
+	display: block;
+}
+
+form p {
+	text-align: initial;
+	display: inline;
+	margin-left: 15px;
+}
+
+.p--nomargin {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+</style>
+
+
+
+</body>
+</html>
