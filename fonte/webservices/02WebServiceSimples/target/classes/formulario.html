@@ -1,0 +1,192 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+<title>Teste do Exemplo WS02 - Web Service Simples</title>
+</head>
+
+<body>
+	<p><h1>Teste do Exemplo WS02 - Web Service Simples</h1></p>
+
+   <br><br>
+   <table border="1" width="50%"i align="center">
+   <tr>
+      <td>
+         <br><b>get("/hello", (request, response) -> "Hello World!");</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5679/hello">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>post("/hello", (request, response) ->  "Hello World: " + request.body());</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <br>
+         <form class="form-hello" action="http://localhost:5679/hello" method="post" id="form-hello">
+            <input type="submit" value="Próximo">
+            <input type="text" value="xxxx" id=":id">
+         </form>
+      </td>
+   </tr>
+   </table>
+
+   <br><br><br>
+
+
+
+	<section class="section--container__responsive">
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Consultar bem de consumo</h1>
+			<p>Consulta bem de consumo no estoque através de web service.</p>
+			<form onsubmit="addIdToPath('form-get', 'http://localhost:6789/bensdeconsumo/')"
+			      method="get" id="form-get">
+				<input class="input--down" type="text" id="id" value=""
+					placeholder="id do produto..."> 
+					<input type="submit" value="consultar"
+					class="input--button input--consult__style">
+			</form>
+		</section>
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Remover produto</h1>
+			<p>Remove bem de consumo do estoque.</p>
+			<form  onsubmit="addIdToPath('form-delete', 'http://localhost:6789/bensdeconsumo/delete/')" 
+			       method="get" id="form-delete">
+				<input class="input--down" type="text" id="id" value=""
+					placeholder="id do produto..."> <input type="submit"
+					value="remover" class="input--remove__style input--button">
+			</form>
+		</section>
+
+		<section class="section--row__responsive">
+			<h1 class="generaltext">Todos os produtos</h1>
+			<p>Recupera todos os bens de consumo do estoque.</p>
+			<form action="http://localhost:6789/bensdeconsumo"  method="get" id="form-all">
+				<input type="submit"
+					value="todos" class="input--consult__style input--button">
+			</form>
+		</section>
+
+	</section>
+
+
+	<section class="section--container__responsive"
+		style="visibility: hidden" id="product-result">
+		<table border="1">
+			<tr>
+				<td>Produto id:</td>
+				<td><span id="id">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Descricao:</td>
+				<td><span id="descricao">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Preco:</td>
+				<td><span id="preco">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Quantidade:</td>
+				<td><span id="quant">Sem Resultado</span></td>
+			</tr>
+			<tr>
+				<td>Data de fabricacao:</td>
+				<td><span id="dataFabricacao">Sem Resultado</span></td>
+			</tr>
+		</table>
+	</section>
+
+	<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+}
+
+.generaltext, p {
+	font-family: Arial;
+	text-align: center;
+}
+
+.section--container__responsive {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-bottom: dashed;
+	border-color: gray;
+}
+
+.input--down {
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 10px;
+}
+
+.input--main__style {
+	background-color: #00FF00;
+}
+
+.input--remove__style {
+	background-color: red;
+}
+
+.input--consult__style {
+	background-color: darkblue;
+}
+
+.input--button {
+	font-weight: bold;
+	font-family: Arial;
+	font-size: medium;
+	border-color: transparent;
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.input--register {
+	display: inline;
+}
+
+.input--radio {
+	display: inline;
+}
+
+input {
+	display: block;
+	border-radius: 7px;
+	padding: 10px;
+	border-style: solid;
+	border-color: lightgray;
+	color: black;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.p--radio__display {
+	display: block;
+}
+
+form p {
+	text-align: initial;
+	display: inline;
+	margin-left: 15px;
+}
+
+.p--nomargin {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+</style>
+
+
+
+</body>
+</html>
