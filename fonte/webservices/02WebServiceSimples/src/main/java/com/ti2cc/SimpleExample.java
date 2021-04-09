@@ -9,7 +9,7 @@ public class SimpleExample {
 
     public static void main(String[] args) {
 
-        port(5678); //Uncomment this if you want spark to listen to port 5678 instead of the default 4567
+        port(5678);
 
         get("/hello", (request, response) -> "Hello World!");
 

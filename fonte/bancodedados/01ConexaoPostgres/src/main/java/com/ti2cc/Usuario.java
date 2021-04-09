@@ -55,6 +55,5 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [codigo=" + codigo + ", login=" + login + ", senha=" + senha + ", sexo=" + sexo + "]";
-	}
-	
+	}	
 }
