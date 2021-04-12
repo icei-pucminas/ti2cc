@@ -1,25 +1,25 @@
 package app;
+
 import static spark.Spark.*;
 
-import service.BemDeConsumoService;
+import service.ProdutoService;
 
 public class Aplicacao {
 	
-	private static BemDeConsumoService bemDeConsumoService = new BemDeConsumoService();
+	private static ProdutoService produtoService = new ProdutoService();
 	
     public static void main(String[] args) {
         port(6789);
 
-        post("/bensdeconsumo", (request, response) -> bemDeConsumoService.add(request, response));
+        post("/produto", (request, response) -> produtoService.add(request, response));
 
-        get("/bensdeconsumo/:id", (request, response) -> bemDeConsumoService.get(request, response));
+        get("/produto/:id", (request, response) -> produtoService.get(request, response));
 
-        get("/bensdeconsumo/update/:id", (request, response) -> bemDeConsumoService.update(request, response));
+        get("/produto/update/:id", (request, response) -> produtoService.update(request, response));
 
-        get("/bensdeconsumo/delete/:id", (request, response) -> bemDeConsumoService.remove(request, response));
+        get("/produto/delete/:id", (request, response) -> produtoService.remove(request, response));
 
-        get("/bensdeconsumo", (request, response) -> bemDeConsumoService.getAll(request, response));
-        
-       
+        get("/produto", (request, response) -> produtoService.getAll(request, response));
+               
     }
 }

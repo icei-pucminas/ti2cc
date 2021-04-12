@@ -1,5 +1,7 @@
 package dao;
 
+import model.Produto;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,7 +11,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Produto;
 
 public class ProdutoDAO {
 	private List<Produto> produtos;
@@ -24,7 +25,6 @@ public class ProdutoDAO {
 	}
 
 	public ProdutoDAO(String filename) throws IOException {
-
 		file = new File(filename);
 		produtos = new ArrayList<Produto>();
 		if (file.exists()) {
