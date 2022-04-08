@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+<title>Teste do Exemplo WS02 - Web Service Simples</title>
+</head>
+
+<body>
+	<p><h1>Teste do Exemplo WS02 - Web Service Simples</h1></p>
+
+   <br><br>
+   <table border="1" width="50%" align="center">
+   <tr>
+      <td>
+         <br><b>get("/oi", (request, response) -> "Oi Mundo!");</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/oi">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>post("/oi", (request, response) ->  "Oi Mundo: " + request.body());</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <br>
+         <form class="form-hello" action="http://localhost:5678/oi" method="post" id="form-hello">
+            <input type="submit" value="Próximo">
+            <input type="text" value="xxxx" name="id">
+         </form>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>
+           get("/privado", (request, response) -> {<br>
+           &nbsp; &nbsp; &nbsp; &nbsp; response.status(401);<br>
+           &nbsp; &nbsp; &nbsp; &nbsp; return "Área privada!!!";<br>
+        });</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/privado">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>get("/usuarios/:nome", (request, response) -> "Usuário selecionado: " + request.params(":nome"));</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/usuarios/nome=seunome">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>get("/novidades/:section", (request, response) -> {<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; response.type("text/xml");<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><novidades>" + request.params("section") + "</novidades>";<br>
+        });</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/novidades/novo">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>get("/protegido", (request, response) -> {<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; halt(403, "Entrada não permitida!!!");<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; return null;<br>
+        });</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/protegido">link</a>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <br><b>get("/redirecionar", (request, response) -> {<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; response.redirect("/novidades/mundo");<br>
+        &nbsp; &nbsp; &nbsp; &nbsp; return null;<br>
+        });</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/redirecionar">link</a>
+      </td>
+   </tr>   
+   <tr>
+      <td>
+         <br><b>get("/", (request, response) -> "root");</b><br><br>
+      </td>
+      <td align = "center" valign="middle">
+         <a href="http://localhost:5678/">link</a>
+      </td>
+   </tr>   
+   </table>
+</body>
+</html>
