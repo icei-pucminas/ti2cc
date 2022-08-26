@@ -5,6 +5,7 @@ public class Usuario {
 	private String login;
 	private String senha;
 	private char sexo;
+	private int nextCodigo;
 	
 	public Usuario() {
 		this.codigo = -1;
